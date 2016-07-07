@@ -184,7 +184,7 @@ func (privVal *PrivValidator) SignProposal(chainID string, proposal *Proposal) e
 	privVal.mtx.Lock()
 	defer privVal.mtx.Unlock()
 	if privVal.LastHeight < proposal.Height ||
-		privVal.LastHeight == proposal.Height && privVal.LastRound < proposal.Round ||
+		privVal.LastHeight == proposal.Height ||
 		privVal.LastHeight == 0 && privVal.LastRound == 0 && privVal.LastStep == stepNone {
 
 		// Persist height/round/step
